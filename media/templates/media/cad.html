@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+       <title>Cadastro de Alunos</title>
+    </head>
+    <body>
+    {% block content %}
+    {% if user.is_authenticated %}
+    <form action="{% url 'cadastro' %}" method="POST">
+            {{ cadform.as_p }}
+            {% csrf_token %}
+        <div class="button">
+            <button type="submit">Cadastrar</button>
+        </div>
+        <p><a href="http://localhost:8000/">Inicio</a></p>
+    </form>
+    {% endif %}
+    {% endblock %}
+    </body>
+</html>

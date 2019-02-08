@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+       <title>Sistema de Notas de Alunos</title>
+    </head>
+    <body>
+       <p>Alunos cadastrados</p>
+       <ul>
+          {% for item in supplier_list %}
+             <li>
+                <b>Nome:</b> {{ item.aluno }} - <b>Média:</b> {{ item.media }}
+             </li>
+          {% endfor %}
+         </ul>
+         <div class="button">
+               <button type="submit" > <a href="http://localhost:8000/login/">Cadastrar Alunos</a> </button>
+         </div>
+         {% block content %}
+         {% if user.is_authenticated %}
+            Bem-Vindo Professor {{user.username}}!
+         {% else %}
+            <p> Você não está logado</p>
+         {% endif %}
+         {% endblock %}
+    </body>
+</html>

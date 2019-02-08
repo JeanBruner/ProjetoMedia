@@ -18,6 +18,5 @@ from django.urls import path
 
 
 urlpatterns = [
-    path('alunos/', include('media.urls')),
     path('', include('media.urls')),
 ]

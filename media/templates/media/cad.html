@@ -7,7 +7,7 @@
     {% block content %}
     {% if user.is_authenticated %}
     <form action="{% url 'cadastro' %}" method="POST">
-            {{ cadform.as_p }}
+            {{ form.as_p }}
             {% csrf_token %}
         <div class="button">
             <button type="submit">Cadastrar</button>

@@ -6,27 +6,19 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm
 from .forms import CadForm
-from django.contrib.auth.decorators import user_passes_test
+from django.views.generic import ListView
+from django.views.generic import CreateView
 
 
-def notas(request):
-    suppliers = Aluno.objects.all()
-    context = {
-       'supplier_list': suppliers
-    }
-    return render(request, 'media/list.html', context)
+class Notas(ListView):
+    model = Aluno
+    template_name = "media/list.html"
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def cadastro(request):
-    if request.method == 'POST':
-        form = CadForm(request.POST)
-        if form.is_valid():
-            form.save()
-            form = CadForm()
-    else:
-        form = CadForm()
-    return render(request, 'media/cad.html', {'cadform': form})
+class Cadastro(CreateView):
+    template_name = 'media/cad.html'
+    model = Aluno
+    form_class = CadForm
 
 
 def user_login(request):
